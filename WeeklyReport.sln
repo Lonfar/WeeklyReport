@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsForms", "WindowsForms\WindowsForms.csproj", "{609D8908-3D52-4EB8-AC20-A44F9C7AE3B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{A9C8DFCB-9E1D-45F3-BE3B-909C4E1609EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{609D8908-3D52-4EB8-AC20-A44F9C7AE3B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609D8908-3D52-4EB8-AC20-A44F9C7AE3B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609D8908-3D52-4EB8-AC20-A44F9C7AE3B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609D8908-3D52-4EB8-AC20-A44F9C7AE3B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9C8DFCB-9E1D-45F3-BE3B-909C4E1609EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C8DFCB-9E1D-45F3-BE3B-909C4E1609EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C8DFCB-9E1D-45F3-BE3B-909C4E1609EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C8DFCB-9E1D-45F3-BE3B-909C4E1609EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
