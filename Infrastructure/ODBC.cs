@@ -9,7 +9,6 @@ namespace Infrastructure
 {
     public class ODBC
     {
-        //测试
         private string connectionString;
         /// <summary>
         /// 设置数据库连接字符串
