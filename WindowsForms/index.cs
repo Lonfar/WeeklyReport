@@ -77,7 +77,7 @@ namespace WindowsForms
                 dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='P&L Dept.'");
                 excel.ImportDataTable("P&L Dept.", 8, dt);
                 ////保存库存
-                excel.SaveExcel(SavePath);
+                excel.SaveExcel(SavePath);asd
         }
         private void ExportReceiving(string SavePath)
         {
