@@ -16,24 +16,11 @@ namespace Infrastructure
             xls = new XlsDocument();
         }
 
-        //private Worksheet GetWorksheet(string sheetName)
-        //{
-        //    Worksheet ws = null;
-        //    IEnumerable<Worksheet> IEws = xls.Workbook.Worksheets.Where(x => x.Name == sheetName);
-        //    foreach (var item in IEws)
-        //    {
-        //        ws = item;
-        //    }
-        //    return ws;
-        //}
         private Worksheet CreateSheet(string sheetName)
         {
             return xls.Workbook.Worksheets.Add(sheetName);
         }
-        //public string ChangeSheetName()
-        //{
 
-        //}
         public void InserCell(string sheetName, int row, int column, string value)
         {
             CreateSheet(sheetName).Cells.Add(row, column, value);
@@ -85,8 +72,6 @@ namespace Infrastructure
             XF xf = xls.NewXF();
             xf.HorizontalAlignment = HorizontalAlignments.Centered;
             xf.VerticalAlignment = VerticalAlignments.Centered;
-            //xf.Pattern = 1;
-            //xf.PatternColor = Colors.Default30;
             xf.UseBorder = true;
             xf.TopLineStyle = 1;
             xf.TopLineColor = Colors.Black;
@@ -98,7 +83,6 @@ namespace Infrastructure
             xf.RightLineColor = Colors.Black;
             xf.Font.Bold = false;
             xf.Font.Height = 9 * 20;
-            //xf.Font.ColorIndex = 1;
             return xf;
         }
         public void SaveExcel(string path)
