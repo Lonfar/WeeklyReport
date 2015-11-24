@@ -30,10 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>C:\Users\fengl\Downloads\Microsoft.Office.Interop.Excel.dll</HintPath>
+    <Reference Include="MyXls.SL2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MyXls.SL2.1.0.0\lib\MyXls.SL2.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -46,10 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseOperation.cs" />
+    <Compile Include="MyxlsExcelHelper.cs" />
     <Compile Include="ODBC.cs" />
     <Compile Include="OperationResult.cs" />
     <Compile Include="OperationResultType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

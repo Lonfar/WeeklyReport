@@ -42,34 +42,35 @@ namespace WindowsForms
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                ExcelHelper excel = new ExcelHelper(Application.StartupPath + @"\Template\material inventry report.xlsx", folderBrowserDialog1.SelectedPath + @"material inventry report " + StartDateTime.Value.ToString("yyyy-MM-dd") + " to " + EndDateTime.Value.ToString("yyyy-MM-dd") + ".xlsx");
-                DataTable dt = (DataTable)dataGridView1.DataSource;
-                InsertExcel(dt, excel);
-                excel.AddSheet("Production Dept.");
-                int r = 1, c = 1;
-                foreach (var rows in dt.AsEnumerable().Where(x => x.Field<string>("Depart Desc") == "Production Dept."))
-                {
-                    foreach (var columns in rows.Table.Columns)
-                    {
-                        excel.SetCells(r, c, columns.ToString());
-                        c++;
-                    }
-                    r++;
-                }
-                excel.SaveAsFile();
-                excel.Dispose();
-            }
-        }
-        private void InsertExcel(DataTable dt, ExcelHelper excel)
-        {
-            for (int c = 0; c < dt.Columns.Count; c++)
-            {
-                for (int r = 0; r < dt.Rows.Count; r++)
-                {
-                    excel.SetCells(r + 8, 1, (r + 1).ToString());
-                    excel.SetCells(r + 8, c + 2, dt.Rows[r][c].ToString());
-                    excel.SetCells(r + 8, 12, "=TODAY() - J" + (r + 8) + "");
-                }
+                //初始化数据库操作类
+                ODBC odbc = new ODBC();
+                DataTable dt;
+                string sql = @"select * from [INVENTORY]"; //where [Receive Date]>='" + StartDateTime.Value.ToString("yyyy-MM-dd") + "' and [Receive Date]<='" + EndDateTime.Value.ToString("yyyy-MM-dd") + "'";
+                //初始化excel操作类，新建Excel
+                MyxlsExcelHelper excel = new MyxlsExcelHelper();
+                //读取库存表
+                dt = odbc.ExecuteDataTable(sql);
+                excel.ImportDataTable("ALL", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Production Dept.'");
+                excel.ImportDataTable("Production Dept.", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Field Operation Dept.' or [Depart Desc]='Base camp'");
+                excel.ImportDataTable("Field Operation Dept.", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Pipeline'");
+                excel.ImportDataTable("Pipeline", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Development Dep.'");
+                excel.ImportDataTable("Development Dep.", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Operation Dept.'");
+                excel.ImportDataTable("Operation Dept.", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Engineering & Construction'");
+                excel.ImportDataTable("Engineering & Construction", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='HSE Dept.'");
+                excel.ImportDataTable("HSE Dept.", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Administration Dept.'");
+                excel.ImportDataTable("Administration Dept.", 8, dt);
+                dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='P&L Dept.'");
+                excel.ImportDataTable("P&L Dept.", 8, dt);
+                ////保存库存
+                excel.SaveExcel(folderBrowserDialog1.SelectedPath + @"material inventry report " + StartDateTime.Value.ToString("yyyy-MM-dd") + " to " + EndDateTime.Value.ToString("yyyy-MM-dd") + ".xls");
             }
         }
     }
