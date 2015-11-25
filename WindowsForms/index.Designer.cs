@@ -151,7 +151,7 @@
             this.sDTWHToolStripMenuItem,
             this.各部门库存情况ToolStripMenuItem});
             this.分开导出ToolStripMenuItem.Name = "分开导出ToolStripMenuItem";
-            this.分开导出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.分开导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.分开导出ToolStripMenuItem.Text = "分开导出";
             // 
             // materialInventryReportToolStripMenuItem
@@ -166,24 +166,28 @@
             this.materialIssueReportToolStripMenuItem.Name = "materialIssueReportToolStripMenuItem";
             this.materialIssueReportToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.materialIssueReportToolStripMenuItem.Text = "material issue report";
+            this.materialIssueReportToolStripMenuItem.Click += new System.EventHandler(this.materialIssueReportToolStripMenuItem_Click);
             // 
             // materialReceiveReportToolStripMenuItem
             // 
             this.materialReceiveReportToolStripMenuItem.Name = "materialReceiveReportToolStripMenuItem";
             this.materialReceiveReportToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.materialReceiveReportToolStripMenuItem.Text = "material Receive report";
+            this.materialReceiveReportToolStripMenuItem.Click += new System.EventHandler(this.materialReceiveReportToolStripMenuItem_Click);
             // 
             // materialTransferBackReportToolStripMenuItem
             // 
             this.materialTransferBackReportToolStripMenuItem.Name = "materialTransferBackReportToolStripMenuItem";
             this.materialTransferBackReportToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.materialTransferBackReportToolStripMenuItem.Text = "material TransferBack report";
+            this.materialTransferBackReportToolStripMenuItem.Click += new System.EventHandler(this.materialTransferBackReportToolStripMenuItem_Click);
             // 
             // materialWellToWellReportToolStripMenuItem
             // 
             this.materialWellToWellReportToolStripMenuItem.Name = "materialWellToWellReportToolStripMenuItem";
             this.materialWellToWellReportToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.materialWellToWellReportToolStripMenuItem.Text = "material WellToWell report";
+            this.materialWellToWellReportToolStripMenuItem.Click += new System.EventHandler(this.materialWellToWellReportToolStripMenuItem_Click);
             // 
             // sDTWHToolStripMenuItem
             // 
@@ -200,30 +204,31 @@
             // 全部导出ToolStripMenuItem
             // 
             this.全部导出ToolStripMenuItem.Name = "全部导出ToolStripMenuItem";
-            this.全部导出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.全部导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.全部导出ToolStripMenuItem.Text = "全部导出";
+            this.全部导出ToolStripMenuItem.Click += new System.EventHandler(this.全部导出ToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // 设置ToolStripMenuItem
             // 
             this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
-            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.设置ToolStripMenuItem.Text = "设置";
             this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(121, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 

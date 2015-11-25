@@ -55,6 +55,8 @@ namespace Infrastructure
                             ws.Cells.Add(startRow, column++, ((DateTime)item).ToString("yyyy-MM-dd"), xf); break;
                         case "System.Decimal":
                             ws.Cells.Add(startRow, column++, Convert.ToDecimal(item).ToString("N2"), xf); break;
+                        default:
+                            ws.Cells.Add(startRow, column++, item.ToString(), xf); break;
                     }
                     //ws.Cells.Add(startRow, column++, item, xf);
                     start++;
