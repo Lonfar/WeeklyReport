@@ -113,7 +113,7 @@ namespace WindowsForms
         {
             //初始化数据库操作类
             DataTable dt;
-            string sql = @"select * from [INVENTORY]"; //where [Receive Date]>='" + StartDateTime.Value.ToString("yyyy-MM-dd") + "' and [Receive Date]<='" + EndDateTime.Value.ToString("yyyy-MM-dd") + "'";
+            string sql = @"select * from [INVENTORY]";
             //初始化excel操作类，新建Excel
             IExcelHelper excel = new AsposeCellsExcelHelper(System.Windows.Forms.Application.StartupPath + @"\Template\material inventry report.xlsx");
             //读取库存表
@@ -123,39 +123,39 @@ namespace WindowsForms
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Production Dept.'");
             excel.InsertDataTable("Production Dept.", 8, dt, true);
-            excel.InsertFormula("Production Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Production Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Field Operation Dept.' or [Depart Desc]='Base camp'");
             excel.InsertDataTable("Field Operation Dept.", 8, dt, true);
-            excel.InsertFormula("Field Operation Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Field Operation Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Pipeline'");
             excel.InsertDataTable("Pipeline", 8, dt, true);
-            excel.InsertFormula("Pipeline", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Pipeline", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Development Dep.'");
             excel.InsertDataTable("Development Dep.", 8, dt, true);
-            excel.InsertFormula("Development Dep.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Development Dep.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Operation Dept.'");
             excel.InsertDataTable("Operation Dept.", 8, dt, true);
-            excel.InsertFormula("Operation Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Operation Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Engineering & Construction'");
             excel.InsertDataTable("Engineering & Construction", 8, dt, true);
-            excel.InsertFormula("Engineering & Construction", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Engineering & Construction", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='HSE Dept.'");
             excel.InsertDataTable("HSE Dept.", 8, dt, true);
-            excel.InsertFormula("HSE Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("HSE Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='Administration Dept.'");
             excel.InsertDataTable("Administration Dept.", 8, dt, true);
-            excel.InsertFormula("Administration Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("Administration Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             dt = odbc.ExecuteDataTable(sql + " where [Depart Desc]='P&L Dept.'");
             excel.InsertDataTable("P&L Dept.", 8, dt, true);
-            excel.InsertFormula("P&L Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
+            //excel.InsertFormula("P&L Dept.", dt.Rows.Count + 8, 6, "=SUM(G1:G" + (dt.Rows.Count + 7) + ")");
 
             excel.SaveExcel(SavePath);
         }
