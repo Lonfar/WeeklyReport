@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 
 namespace Infrastructure
 {
     public class ODBC
     {
         private string connectionString;
+
         /// <summary>
         /// 设置数据库连接字符串
         /// </summary>
@@ -17,13 +15,14 @@ namespace Infrastructure
         {
             set { connectionString = value; }
         }
+
         /// <summary>
         /// 构造函数
         /// </summary>
         public ODBC() : this(System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionName"].ConnectionString)
         {
-
         }
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -32,6 +31,7 @@ namespace Infrastructure
         {
             this.connectionString = connectionString;
         }
+
         /// <summary>
         /// 执行一个查询，并返回结果集
         /// </summary>
@@ -41,6 +41,7 @@ namespace Infrastructure
         {
             return ExecuteDataTable(sql, CommandType.Text, null);
         }
+
         /// <summary>
         /// 执行一个查询,并返回查询结果
         /// </summary>
@@ -51,6 +52,7 @@ namespace Infrastructure
         {
             return ExecuteDataTable(sql, commandType, null);
         }
+
         /// <summary>
         /// 执行一个查询,并返回查询结果
         /// </summary>
@@ -82,8 +84,9 @@ namespace Infrastructure
             }
             return data;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql">要执行的查询SQL文本命令</param>
         /// <returns></returns>
@@ -91,8 +94,9 @@ namespace Infrastructure
         {
             return ExecuteReader(sql, CommandType.Text, null);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql">要执行的SQL语句</param>
         /// <param name="commandType">要执行的查询语句的类型，如存储过程或者SQL文本命令</param>
@@ -101,8 +105,9 @@ namespace Infrastructure
         {
             return ExecuteReader(sql, commandType, null);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql">要执行的SQL语句</param>
         /// <param name="commandType">要执行的查询语句的类型，如存储过程或者SQL文本命令</param>
@@ -124,8 +129,9 @@ namespace Infrastructure
             //CommandBehavior.CloseConnection参数指示关闭Reader对象时关闭与其关联的Connection对象
             return command.ExecuteReader(CommandBehavior.CloseConnection);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql">要执行的查询SQL文本命令</param>
         /// <returns></returns>
@@ -133,8 +139,9 @@ namespace Infrastructure
         {
             return ExecuteScalar(sql, CommandType.Text, null);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql">要执行的SQL语句</param>
         /// <param name="commandType">要执行的查询语句的类型，如存储过程或者SQL文本命令</param>
@@ -143,8 +150,9 @@ namespace Infrastructure
         {
             return ExecuteScalar(sql, commandType, null);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql">要执行的SQL语句</param>
         /// <param name="commandType">要执行的查询语句的类型，如存储过程或者SQL文本命令</param>
@@ -172,6 +180,7 @@ namespace Infrastructure
             }
             return result;//返回查询结果的第一行第一列，忽略其它行和列
         }
+
         /// <summary>
         /// 对数据库执行增删改操作
         /// </summary>
@@ -181,6 +190,7 @@ namespace Infrastructure
         {
             return ExecuteNonQuery(sql, CommandType.Text, null);
         }
+
         /// <summary>
         /// 对数据库执行增删改操作
         /// </summary>
@@ -191,6 +201,7 @@ namespace Infrastructure
         {
             return ExecuteNonQuery(sql, commandType, null);
         }
+
         /// <summary>
         /// 对数据库执行增删改操作
         /// </summary>
@@ -220,6 +231,7 @@ namespace Infrastructure
             }
             return count;//返回执行增删改操作之后，数据库中受影响的行数
         }
+
         /// <summary>
         /// 返回当前连接的数据库中所有由用户创建的数据库
         /// </summary>

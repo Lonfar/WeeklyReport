@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using org.in2bits.MyXls;
+﻿using org.in2bits.MyXls;
+using System;
 using System.Data;
-using Aspose.Cells;
+using System.IO;
 
 namespace Infrastructure
 {
     public class MyxlsExcelHelper : IExcelHelper
     {
-        XlsDocument xls;
+        private XlsDocument xls;
+
         public MyxlsExcelHelper()
         {
             xls = new XlsDocument();
         }
+
         public MyxlsExcelHelper(string path)
         {
             xls = new XlsDocument(path);
@@ -30,6 +28,7 @@ namespace Infrastructure
         {
             CreatSheet(sheetName).Cells.Add(row, column, value);
         }
+
         public void InsertDataTable(string sheetName, int startRow, DataTable dt)
         {
             org.in2bits.MyXls.Worksheet ws = CreatSheet(sheetName);
@@ -74,6 +73,7 @@ namespace Infrastructure
                 num++;
             }
         }
+
         public XF CellStyle()
         {
             XF xf = xls.NewXF();
@@ -92,6 +92,7 @@ namespace Infrastructure
             xf.Font.Height = 9 * 20;
             return xf;
         }
+
         public void SaveExcel(string path)
         {
             Stream st = new System.IO.FileStream(path, FileMode.Create);

@@ -52,7 +52,6 @@
     <Compile Include="AsposeCellsExcelHelper.cs" />
     <Compile Include="BaseOperation.cs" />
     <Compile Include="IExcelHelper.cs" />
-    <Compile Include="MyxlsExcelHelper.cs" />
     <Compile Include="ODBC.cs" />
     <Compile Include="OperationResult.cs" />
     <Compile Include="OperationResultType.cs" />

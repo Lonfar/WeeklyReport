@@ -1,5 +1,4 @@
-﻿
-namespace Infrastructure
+﻿namespace Infrastructure
 {
     public class OperationResult
     {
@@ -62,7 +61,7 @@ namespace Infrastructure
             AppendData = appendData;
         }
 
-        #endregion
+        #endregion 构造函数
 
         #region 属性
 
@@ -86,6 +85,6 @@ namespace Infrastructure
         /// </summary>
         public object AppendData { get; set; }
 
-        #endregion
+        #endregion 属性
     }
 }

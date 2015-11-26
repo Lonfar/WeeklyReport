@@ -1,32 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Aspose.Cells;
+﻿using Aspose.Cells;
+using System;
 using System.Data;
 
 namespace Infrastructure
 {
     public class AsposeCellsExcelHelper : IExcelHelper
     {
-        Workbook xls;
+        private Workbook xls;
+
         public AsposeCellsExcelHelper()
         {
             xls = new Workbook();
         }
+
         public AsposeCellsExcelHelper(string path)
         {
             xls = new Workbook(path);
         }
+
         public void CreatSheet(string sheetName)
         {
             xls.Worksheets.Add(sheetName);
         }
+
         public void ChangeSheetName(string formName, string toName)
         {
             xls.Worksheets[formName].Name = toName;
         }
-        public void InsertCell(string sheetName, int row, int column, string value, Style style)
+
+        public void InsertCell(string sheetName, int row, int column, object value, Style style)
         {
             xls.Worksheets[sheetName].Cells[row, column].Value = value;
             xls.Worksheets[sheetName].Cells[row, column].SetStyle(style);
@@ -53,6 +55,7 @@ namespace Infrastructure
             {
                 int column = 1;
                 int start = 1;
+                Style style = new Style();
                 foreach (var item in rows.ItemArray)
                 {
                     if (start == 1)
@@ -64,11 +67,19 @@ namespace Infrastructure
                         case "System.String":
                             InsertCell(sheetName, startRow - 1, column++, item.ToString(), AddStyle());
                             break;
+
                         case "System.DateTime":
                             InsertCell(sheetName, startRow - 1, column++, ((DateTime)item).ToString("yyyy-MM-dd"), AddStyle());
                             break;
                         case "System.Decimal":
-                            InsertCell(sheetName, startRow - 1, column++, Convert.ToDecimal(item).ToString("N2"), AddStyle());
+                            style.Borders.SetColor(System.Drawing.Color.Black);
+                            style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.Thin;
+                            style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
+                            style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.Thin;
+                            style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.Thin;
+                            style.Font.Size = 9;
+                            style.Number = 4;
+                            InsertCell(sheetName, startRow - 1, column++, Convert.ToDecimal(item), style);
                             break;
                         default:
                             InsertCell(sheetName, startRow - 1, column++, item.ToString(), AddStyle());
@@ -79,7 +90,8 @@ namespace Infrastructure
                     if (start == rows.ItemArray.Length + 1 && isDuration)
                     {
                         //InsertCell(sheetName, startRow - 1, rows.ItemArray.Length + 1, "=TODAY()-J" + (startRow), AddStyle());
-                        xls.Worksheets[sheetName].Cells[startRow - 1, rows.ItemArray.Length + 1].Formula = "=TODAY()-J" + (startRow);
+                        //xls.Worksheets[sheetName].Cells[startRow - 1, rows.ItemArray.Length + 1].Formula = "=TODAY()-J" + (startRow);
+                        InsertFormula(sheetName, startRow - 1, rows.ItemArray.Length + 1, "=TODAY()-J" + (startRow));
                         xls.Worksheets[sheetName].Cells[startRow - 1, rows.ItemArray.Length + 1].SetStyle(AddStyle());
                     }
                 }
@@ -87,11 +99,11 @@ namespace Infrastructure
                 num++;
             }
         }
+
         public void SaveExcel(string path)
         {
             xls.Save(path);
             xls.Dispose();
-
         }
 
         private Style AddStyle()
@@ -106,9 +118,16 @@ namespace Infrastructure
             return style;
         }
 
-        public void InsertCell(string sheetName, int row, int column, string value)
+        public void InsertCell(string sheetName, int row, int column, object value)
         {
-            throw new NotImplementedException();
+            xls.Worksheets[sheetName].Cells[row, column].Value = value;
         }
+
+        public void InsertFormula(string sheetName, int row, int column, object value)
+        {
+            xls.Worksheets[sheetName].Cells[row, column].Formula = value.ToString();
+        }
+
+
     }
 }
