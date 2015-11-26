@@ -194,6 +194,7 @@
             this.sDTWHToolStripMenuItem.Name = "sDTWHToolStripMenuItem";
             this.sDTWHToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
             this.sDTWHToolStripMenuItem.Text = "SDT-WH";
+            this.sDTWHToolStripMenuItem.Click += new System.EventHandler(this.sDTWHToolStripMenuItem_Click);
             // 
             // 各部门库存情况ToolStripMenuItem
             // 

@@ -5,29 +5,34 @@ using System.Text;
 using System.IO;
 using org.in2bits.MyXls;
 using System.Data;
+using Aspose.Cells;
 
 namespace Infrastructure
 {
-    public class MyxlsExcelHelper
+    public class MyxlsExcelHelper : IExcelHelper
     {
         XlsDocument xls;
         public MyxlsExcelHelper()
         {
             xls = new XlsDocument();
         }
+        public MyxlsExcelHelper(string path)
+        {
+            xls = new XlsDocument(path);
+        }
 
-        private Worksheet CreateSheet(string sheetName)
+        private org.in2bits.MyXls.Worksheet CreatSheet(string sheetName)
         {
             return xls.Workbook.Worksheets.Add(sheetName);
         }
 
-        public void InserCell(string sheetName, int row, int column, string value)
+        public void InsertCell(string sheetName, int row, int column, string value)
         {
-            CreateSheet(sheetName).Cells.Add(row, column, value);
+            CreatSheet(sheetName).Cells.Add(row, column, value);
         }
-        public void ImportDataTable(string sheetName, int startRow, DataTable dt)
+        public void InsertDataTable(string sheetName, int startRow, DataTable dt)
         {
-            Worksheet ws = CreateSheet(sheetName);
+            org.in2bits.MyXls.Worksheet ws = CreatSheet(sheetName);
             XF xf = CellStyle();
             int index = 0;
             for (int c = 1; c <= dt.Columns.Count; c++)
@@ -92,6 +97,26 @@ namespace Infrastructure
             Stream st = new System.IO.FileStream(path, FileMode.Create);
             xls.Save(st);
             st.Close();
+        }
+
+        void IExcelHelper.CreatSheet(string sheetName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddStyle(string sheetName, int row, int column)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertCell(string sheetName, int row, int column, string value, Aspose.Cells.Style style)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertDataTable(string sheetName, int startRow, DataTable dt, bool isDuration)
+        {
+            throw new NotImplementedException();
         }
     }
 }
