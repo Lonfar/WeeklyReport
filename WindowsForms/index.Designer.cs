@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.StartDateTime = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.EndDateTime = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.分开导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,11 +45,8 @@
             this.全部导出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.EndDateTime = new System.Windows.Forms.DateTimePicker();
-            this.StartDateTime = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -75,6 +75,32 @@
             this.splitContainer1.Size = new System.Drawing.Size(324, 125);
             this.splitContainer1.SplitterDistance = 25;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // StartDateTime
+            // 
+            this.StartDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.StartDateTime.Location = new System.Drawing.Point(88, 4);
+            this.StartDateTime.Name = "StartDateTime";
+            this.StartDateTime.Size = new System.Drawing.Size(98, 21);
+            this.StartDateTime.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(192, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "To";
+            // 
+            // EndDateTime
+            // 
+            this.EndDateTime.CustomFormat = "";
+            this.EndDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateTime.Location = new System.Drawing.Point(215, 4);
+            this.EndDateTime.Name = "EndDateTime";
+            this.EndDateTime.Size = new System.Drawing.Size(97, 21);
+            this.EndDateTime.TabIndex = 1;
             // 
             // menuStrip1
             // 
@@ -108,7 +134,7 @@
             this.sDTWHToolStripMenuItem,
             this.各部门库存情况ToolStripMenuItem});
             this.分开导出ToolStripMenuItem.Name = "分开导出ToolStripMenuItem";
-            this.分开导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.分开导出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.分开导出ToolStripMenuItem.Text = "分开导出";
             // 
             // materialInventryReportToolStripMenuItem
@@ -163,56 +189,30 @@
             // 全部导出ToolStripMenuItem
             // 
             this.全部导出ToolStripMenuItem.Name = "全部导出ToolStripMenuItem";
-            this.全部导出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.全部导出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.全部导出ToolStripMenuItem.Text = "全部导出";
             this.全部导出ToolStripMenuItem.Click += new System.EventHandler(this.全部导出ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(121, 6);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
-            // 
-            // EndDateTime
-            // 
-            this.EndDateTime.CustomFormat = "";
-            this.EndDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.EndDateTime.Location = new System.Drawing.Point(215, 4);
-            this.EndDateTime.Name = "EndDateTime";
-            this.EndDateTime.Size = new System.Drawing.Size(97, 21);
-            this.EndDateTime.TabIndex = 1;
-            // 
-            // StartDateTime
-            // 
-            this.StartDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.StartDateTime.Location = new System.Drawing.Point(88, 4);
-            this.StartDateTime.Name = "StartDateTime";
-            this.StartDateTime.Size = new System.Drawing.Size(98, 21);
-            this.StartDateTime.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(192, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "To";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 48);
+            this.label2.Size = new System.Drawing.Size(239, 60);
             this.label2.TabIndex = 0;
-            this.label2.Text = "周报生成工具：\r\n1、先选定“起始日期”\r\n2、在选定”终止日期“\r\n3、“选项”中有需要生成的Excel";
+            this.label2.Text = "周报生成工具：\r\n1、先选定“起始日期”\r\n2、在选定”终止日期“\r\n3、“选项”中有需要生成的Excel\r\n4、选择盘符的根目录即可，不要选择文件夹";
             // 
             // index
             // 
